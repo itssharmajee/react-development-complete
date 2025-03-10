@@ -1,0 +1,22 @@
+{
+  "name": "foot-restaurant",
+  "version": "1.0.0",
+  "description": "it is a small project for food restaurant ",
+  "license": "ISC",
+  "author": "Gautam Kumar Sharma",
+  "type": "module",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.3.0"
+  }
+}
