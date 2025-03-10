@@ -11,7 +11,7 @@ const Error = ()=>{
             <h2>Opps!! Something went wrong</h2>
             <h4>
             <p> {error.status} {error.statusText}</p>
-            <p>{error.error.message}</p>
+            {/* <p>{error.error.message}</p> */}
             </h4>
         </div>
     )

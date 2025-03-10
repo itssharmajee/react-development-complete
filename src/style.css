@@ -1,11 +1,20 @@
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li, a {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+a {
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style: none;
 }
-a,button{
+
+a,
+button {
     cursor: pointer;
 }
 
@@ -21,7 +30,8 @@ a,button{
 
 /* Logo styles */
 .logo img {
-    height: 50px; /* Adjust as needed */
+    height: 50px;
+    /* Adjust as needed */
 }
 
 /* Navigation links styles */
@@ -37,10 +47,11 @@ a,button{
 }
 
 .nav-links a:hover {
-    color: #ff6347; /* Change to your preferred hover color */
+    color: #ff6347;
+    /* Change to your preferred hover color */
 }
 
-.card-container{
+.card-container {
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -102,4 +113,36 @@ a,button{
 /* Button hover effect */
 .card-button:hover {
     background-color: #0056b3;
+}
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-list li:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.item-price {
+    color: #888;
+}
+
+#menuList-heading{
+
+    padding: 20px;
+    text-align: center;
 }

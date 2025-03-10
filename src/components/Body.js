@@ -2,49 +2,59 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { Skeleton } from "./Skeleton";
 import Search from "./Search";
+import { SWIGGY_DATA_URL } from "../utils/constraints.js";
+import { Link } from "react-router-dom";
 const Body = () => {
   const [actualData, setActualData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const URL =
-    "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.63270&lng=77.21980&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
   async function fetchData() {
-    const response = await fetch(URL);
+    const response = await fetch(SWIGGY_DATA_URL);
     const data = await response.json();
     const result =
       data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;  
+        ?.restaurants;
     setActualData(result);
     setFilteredData(result);
   }
 
-
-
   function handleSearchBar() {
-    let s = actualData.filter((item) => item.info.name.toUpperCase().includes(searchText.toUpperCase()));// making case insensitive 
+    let s = actualData.filter((item) =>
+      item.info.name.toUpperCase().includes(searchText.toUpperCase())
+    ); // making case insensitive
     setFilteredData(s);
   }
 
-
   function moreThanSpecific() {
-    let updatedList = actualData.filter((item) => item.info.avgRating > 4.2);
-    setActualData(updatedList);
+    let updatedList = actualData.filter((item) => Number(item.info.avgRating ) > 4.2);
+    setFilteredData(updatedList);
   }
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-
-  return actualData?.length == 0 ? <Skeleton/> : (
+  return actualData?.length == 0 ? (
+    <Skeleton />
+  ) : (
     <div>
-      <Search searchText={searchText} setSearchText={setSearchText} handleSearchBar={handleSearchBar} moreThanSpecific={moreThanSpecific}/>
+      <Search
+        searchText={searchText}
+        setSearchText={setSearchText}
+        handleSearchBar={handleSearchBar}
+        moreThanSpecific={moreThanSpecific}
+      />
       <div className="card-container">
-        {filteredData?.map((item, index) => (
-          <Card key={item.info.id} cardData={item.info} />
-        ))}
+        {filteredData?.map((item) => {
+          return (
+            <Link key={item.info.id} to={"/restaurant/" + item.info.id}>
+              {console.log(item.info.id)
+              }
+              <Card cardData={item.info} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

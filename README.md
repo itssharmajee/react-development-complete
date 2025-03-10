@@ -52,8 +52,46 @@ root.render(<RouterProvider router={router}/>)
 
 ```
 
-- Link Component : mainly used to navigate to the particular url, when click over it 
+- Link Component : mainly used to navigate to the particular url, when click over it, as it does not refresh complete page, if you see in the actual DOM it is  achor tag....so finally you can say that Link is wrapper over anchor tag.
 
 ```javascript
     <Link to='/about'>About </Link>
+```
+
+
+- useRouterError () hook
+As it is used to handle Error when encounter any error in the route
+```javascript
+import { useRouteError } from "react-router-dom";
+
+const Error = ()=>{
+    const error = useRouteError();// as this hook return custom error related to path and all
+
+    // console.log(error);
+    
+
+    return (
+        <div>
+            <h2>Opps!! Something went wrong</h2>
+            <h4>
+            <p> {error.status} {error.statusText}</p>
+            {/* <p>{error.error.message}</p> */}
+            </h4>
+        </div>
+    )
+}
+
+export default Error;
+
+
+```
+
+
+- useParams() hook 
+As this is used to get url parameter in the code 
+
+```javascript
+    import {useParams}  from 'react-router-dom';
+    // localhost:2000/user/:userId
+    const {userId} = useParams();
 ```
