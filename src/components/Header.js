@@ -18,7 +18,7 @@ export const Header = () => {
         <Link to='/'>Home </Link>{/* so we use Link component of react router dom that does not refresh completely the page*/}
 
         <Link to='/about'>About </Link>
-        <Link to='/service'>Services </Link>
+        <Link to='/service'>Service </Link>
         <Link to='/contact'>Contact </Link>
 
         <button className="btn" onClick={loginToggle}>

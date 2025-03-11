@@ -8,6 +8,7 @@ import About from './components/About';
 import NotFound from "./components/NotFound";
 import Error from "./components/Error"
 import Restaurant from "./components/Restaurant";
+import Service from "./components/Service";
 function App() {
   return (
     <div>
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path:'/contact',
         element:<Contact/>,
+      },
+      {
+        path:'/service',
+        element:<Service/>,
       },
       {
         path:'/restaurant/:restId',
