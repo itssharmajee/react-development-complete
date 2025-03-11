@@ -1,35 +1,11 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { SWIGGY_MENU_URL } from "../utils/constraints";
 import RestaurantMenuCard from './RestaurantMenuCard';
 import {Skeleton} from "./Skeleton"
+import useFetchMenu from "../utils/custom-hook/useFetchMenu";
 const Restaurant = () => {
-  const [menuData, setMenuData] = useState([]);
   const { restId } = useParams(); // returning an object, we are taking restId from URL
+  const menuData = useFetchMenu(restId);
 
-  // console.log("ss",useEffect());
-  const URL = SWIGGY_MENU_URL + restId;
-
-  async function fetchData() {
-    try {
-      const response = await fetch(URL);
-      const result = await response.json();
-      // console.log(res);
-
-      // console.log(res.data.cards[2].card.card.info);
-      // setMenuData(res?.data?.cards[2]?.card?.card?.info);
-      setMenuData(
-        result?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card
-          .card.itemCards
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div>

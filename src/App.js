@@ -9,9 +9,14 @@ import NotFound from "./components/NotFound";
 import Error from "./components/Error"
 import Restaurant from "./components/Restaurant";
 import Service from "./components/Service";
+import useOnlineStatus from "./utils/custom-hook/useOnlineStatus";
 function App() {
+  const status = useOnlineStatus();
   return (
     <div>
+      <p style={{textAlign:'center'}}>Online Status :{status?"🟢":"🔴"}</p>
+
+    
       <Header />
           {/* here render children components of App */}
         <Outlet/>       {/*this Component of react-router-dom all you to render children components 
