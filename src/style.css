@@ -146,3 +146,67 @@ button {
     padding: 20px;
     text-align: center;
 }
+
+
+/* General body and layout styles */
+.github-body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Profile container */
+  .profile-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  /* Avatar image styling */
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  /* Username styling */
+  .username {
+    font-size: 24px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Bio text styling */
+  .bio {
+    font-size: 16px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  /* Profile link styling */
+  .profile-link {
+    font-size: 16px;
+    color: #0073e6;
+    text-decoration: none;
+    margin: 10px 0;
+  }
+  
+  .profile-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Repository section */
+  .repo-section {
+    margin-top: 20px;
+  }
+

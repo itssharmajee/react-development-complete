@@ -95,3 +95,106 @@ As this is used to get url parameter in the code
     // localhost:2000/user/:userId
     const {userId} = useParams();
 ```
+
+
+In React, there are two primary types of components: **Functional Components** and **Class Components**. The main differences between them are in their structure, syntax, lifecycle methods, and how they manage state and props. Let's break down these differences with examples:
+
+### 1. **Syntax and Structure**
+   - **Functional Components**:
+     - These are simply JavaScript functions that return JSX (JavaScript XML).
+     - They are more concise and easier to write.
+     - Before React 16.8, functional components were stateless and could not handle lifecycle methods.
+     - After React 16.8, functional components can use **Hooks** (like `useState`, `useEffect`, etc.), which makes them more powerful.
+
+   Example of a Functional Component:
+   ```jsx
+   import React, { useState } from 'react';
+
+   function Counter() {
+     const [count, setCount] = useState(0); // using useState hook
+
+     return (
+       <div>
+         <h1>Count: {count}</h1>
+         <button onClick={() => setCount(count + 1)}>Increment</button>
+       </div>
+     );
+   }
+
+   export default Counter;
+   ```
+
+   - **Class Components**:
+     - Class components are ES6 classes that extend `React.Component`.
+     - They require more boilerplate and are more verbose.
+     - Class components have **state** and **lifecycle methods** by default.
+     - Before React 16.8, class components were used for stateful components and had lifecycle methods such as `componentDidMount`, `componentDidUpdate`, etc.
+
+   Example of a Class Component:
+   ```jsx
+   import React, { Component } from 'react';
+
+   class Counter extends Component {
+     constructor(props) {
+       super(props);
+       this.state = { count: 0 }; // state initialization
+     }
+
+     increment = () => {
+       this.setState({ count: this.state.count + 1 });
+     };
+
+     render() {
+       return (
+         <div>
+           <h1>Count: {this.state.count}</h1>
+           <button onClick={this.increment}>Increment</button>
+         </div>
+       );
+     }
+   }
+
+   export default Counter;
+   ```
+
+### 2. **State Management**
+   - **Functional Components**:
+     - With React Hooks (like `useState`), functional components can now have state.
+   
+   - **Class Components**:
+     - Class components have state by default, which is stored in the `this.state` object.
+
+### 3. **Lifecycle Methods**
+   - **Functional Components**:
+     - Before hooks, functional components couldn't use lifecycle methods.
+     - With the introduction of React Hooks (e.g., `useEffect`), functional components can mimic lifecycle behavior.
+     - `useEffect` can handle component mounting, updating, and unmounting.
+
+   - **Class Components**:
+     - Class components have built-in lifecycle methods like `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
+     
+### 4. **Performance**
+   - **Functional Components**:
+     - Functional components are generally more lightweight and can be more performant due to their simpler nature.
+   
+   - **Class Components**:
+     - Class components are slightly more heavyweight due to the extra setup (class syntax, `this` context, and lifecycle methods).
+
+### 5. **Hooks vs Lifecycle Methods**
+   - **Functional Components**:
+     - Use hooks like `useState`, `useEffect`, `useContext`, etc.
+   
+   - **Class Components**:
+     - Use lifecycle methods like `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`.
+
+### 6. **When to Use Which?**
+   - **Functional Components**:
+     - Functional components are now the recommended way to write React components due to their simplicity and the power of hooks.
+     - Use functional components whenever possible.
+   
+   - **Class Components**:
+     - Class components are still valid, but they are considered legacy. You might encounter them in older codebases.
+
+### Conclusion:
+Functional components are now more commonly used in React development, especially with the introduction of hooks, which allows them to handle state and lifecycle events. Class components are still in use but are generally less preferred for new React development.
+
