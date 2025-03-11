@@ -20,6 +20,7 @@ export const Header = () => {
         <Link to='/about'>About </Link>
         <Link to='/service'>Service </Link>
         <Link to='/contact'>Contact </Link>
+        <Link to='/cloth'>ClothShop </Link>
 
         <button className="btn" onClick={loginToggle}>
           {toggle ? "Login In" : "Log Out"}

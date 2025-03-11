@@ -16,7 +16,7 @@ const useFetchMenu = (restId) => {
                     .card.itemCards
             );
         } catch (error) {
-            console.log(error);
+            console.log(error + 'check you internet connectivity');
         }
     }
 

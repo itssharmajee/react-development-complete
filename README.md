@@ -230,28 +230,131 @@ Eg:
 // creating
 import { useEffect, useState } from "react";
 
-          const useOnlineStatus = () => {
-            const [networkStatus, setNetworkStatus] = useState(true);
+const useOnlineStatus = () => {
+  const [networkStatus, setNetworkStatus] = useState(true);
 
-            useEffect(() => {
-              window.addEventListener("online", () => {
-                setNetworkStatus(true);
-              });
+  useEffect(() => {
+    window.addEventListener("online", () => {
+      setNetworkStatus(true);
+    });
 
-              window.addEventListener("offline", () => {
-                setNetworkStatus(false);
-              });
-            }, []);
+    window.addEventListener("offline", () => {
+      setNetworkStatus(false);
+    });
+  }, []);
 
-            return networkStatus;
-          };
+  return networkStatus;
+};
 
-          export default useOnlineStatus;
+export default useOnlineStatus;
 
+// using anywhere in the code
 
-// using anywhere in the code 
-
-  const status = useOnlineStatus();
-  <p style={{textAlign:'center'}}>Online Status :{status?"🟢":"🔴"}</p>
-
+const status = useOnlineStatus();
+<p style={{ textAlign: "center" }}>Online Status :{status ? "🟢" : "🔴"}</p>;
 ```
+
+# Chunking, Code Splitting, Dynamic Bundling, LazyLoading, On Demand Loading, Dynamic import
+
+There all words have a single meaning that is code spilitting, take only as much required.
+
+Lazy loading in React is a technique where components are loaded only when they are needed (i.e., when they are about to be rendered), which helps to improve the performance of an application by reducing the initial loading time and splitting the code into smaller, manageable chunks.
+
+To implement lazy loading in React, you can use the `React.lazy()` function along with `Suspense` Component from React.
+
+Here's a simple example to illustrate how it works:
+
+### Step 1: Using `React.lazy()`
+
+`React.lazy()` allows you to dynamically import a component, which can be done with `import()`. This method returns a promise, and React will automatically load the component when it is needed.
+
+### Example:
+
+```jsx
+import React, { Suspense } from "react";
+
+// Lazy loading the `ClothingShop` component
+const ClothingShop = lazy(() => import("./components/ClothingShop"));
+
+function App() {
+  return (
+    <div>
+      <h1>Welcome to the App</h1>
+      <Suspense fallback={<Skeleton />}>
+        <ClothingShop />
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Key points:
+
+1. **`React.lazy()`**: This is used to load a component dynamically. It takes a function that must return a promise, typically created using `import()`.
+2. **`Suspense`**: This is a component used to wrap your lazy-loaded components. It lets you specify a fallback (such as a loading spinner or a loading message) that will be displayed while the lazy-loaded component is being fetched.
+
+### Step 2: Handling multiple lazy-loaded components
+
+You can lazy load multiple components in your app to improve performance:
+
+```jsx
+import React, { Suspense } from "react";
+
+const Home = React.lazy(() => import("./Home"));
+const About = React.lazy(() => import("./About"));
+const Contact = React.lazy(() => import("./Contact"));
+
+function App() {
+  return (
+    <div>
+      <h1>Welcome to the App</h1>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Home />
+        <About />
+        <Contact />
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Step 3: Code Splitting in Production
+
+React will automatically create separate JavaScript files for each lazy-loaded component, so they are only loaded when required. This helps in reducing the initial load time.
+
+### Notes:
+
+- The fallback UI (like `<div>Loading...</div>`) is displayed while the lazy-loaded component is being fetched.
+- You can also use **React Router** in combination with lazy loading for route-based code splitting.
+
+### Example with React Router:
+
+```jsx
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const Home = React.lazy(() => import("./Home"));
+const About = React.lazy(() => import("./About"));
+
+function App() {
+  return (
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </Suspense>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+This way, the components will only be loaded when the user navigates to their respective routes, improving performance further.

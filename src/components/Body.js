@@ -4,19 +4,25 @@ import { Skeleton } from "./Skeleton";
 import Search from "./Search";
 import { SWIGGY_DATA_URL } from "../utils/constraints.js";
 import { Link } from "react-router-dom";
+import useOnlineStatus from '../utils/custom-hook/useOnlineStatus.js'
 const Body = () => {
   const [actualData, setActualData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const status = useOnlineStatus();
 
   async function fetchData() {
-    const response = await fetch(SWIGGY_DATA_URL);
-    const data = await response.json();
-    const result =
-      data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setActualData(result);
-    setFilteredData(result);
+    try {
+      const response = await fetch(SWIGGY_DATA_URL);
+      const data = await response.json();
+      const result =
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+      setActualData(result);
+      setFilteredData(result);    
+    } catch (error) {
+      alert(error + 'check you network connection or fetch URL')
+    }
   }
 
   function handleSearchBar() {
@@ -35,6 +41,8 @@ const Body = () => {
     fetchData();
   }, []);
 
+  if(status == false) return <h1>You are Offline Check you Internet Connectivity</h1>
+
   return actualData?.length == 0 ? (
     <Skeleton />
   ) : (
@@ -46,6 +54,7 @@ const Body = () => {
         moreThanSpecific={moreThanSpecific}
       />
       <div className="card-container">
+
         {filteredData?.map((item) => {
           return (
             <Link key={item.info.id} to={"/restaurant/" + item.info.id}>

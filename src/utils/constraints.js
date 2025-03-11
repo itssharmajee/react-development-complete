@@ -15,3 +15,6 @@ export const images = [
 export const IMAGE_BASE_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
 export const GITHUB_PROFILE_URL = 'https://api.github.com/users/'; // conacate username
+
+export const CLOTH_URL = 'https://fakestoreapi.com/products'; 
+

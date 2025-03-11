@@ -12,15 +12,16 @@ class ProfileClass extends React.Component {
     }
 
     async componentDidMount() {
-        const response = await fetch(GITHUB_PROFILE_URL + 'itssharmajee');
-        const data = await response.json();
-
-
-        
-        this.setState({
-            userData: data
-        })
-
+        try {
+            const response = await fetch(GITHUB_PROFILE_URL + 'itssharmajee');
+            const data = await response.json();
+            this.setState({
+                userData: data
+            })
+    
+        } catch (error) {
+            alert(error + ' check you network connection or URL');
+        }
     }
 
 
