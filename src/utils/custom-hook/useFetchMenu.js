@@ -10,13 +10,12 @@ const useFetchMenu = (restId) => {
         try {
             const response = await fetch(URL);
             const result = await response.json();
-            // if result is not giving what's new section of the API it will take Recommended section of the API
-            setMenuData(
-                result?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card
-                    .card.itemCards == undefined ? result?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card
-                        .card.itemCards : result?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card
-                            .card.itemCards
-            );
+
+            const categories = result?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+                ?.filter((c) => c?.card?.card?.['@type'] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+
+            setMenuData(categories);
+            
         } catch (error) {
             console.log(error + 'check you internet connectivity');
         }
@@ -25,8 +24,6 @@ const useFetchMenu = (restId) => {
     useEffect(() => {
         fetchData();
     }, [restId]);
-
-    console.log(menuData);
 
     return menuData;
 }

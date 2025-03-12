@@ -362,7 +362,7 @@ This way, the components will only be loaded when the user navigates to their re
 
 # Higher order Component
 
-
+# Lifting UP 
 
 
 # Conterolled & Uncontrolled Components

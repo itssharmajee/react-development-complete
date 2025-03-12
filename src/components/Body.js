@@ -43,7 +43,7 @@ const Body = () => {
 
   if(status == false) return <h1>You are Offline Check you Internet Connectivity</h1>
 
-  return actualData?.length == 0 ? (
+  return filteredData?.length == 0 ? (
     <Skeleton />
   ) : (
     <div>
