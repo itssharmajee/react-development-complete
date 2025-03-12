@@ -18,7 +18,7 @@ const ClothingShop = lazy(()=>import('./components/ClothingShop'));
 function App() {
   const status = useOnlineStatus();
   return (
-    <div>
+    <div class="container py-4 px-3 mx-auto">
       <p style={{textAlign:'center'}}>Online Status :{status?"🟢":"🔴"}</p>
 
       <Header />

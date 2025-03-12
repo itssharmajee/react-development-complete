@@ -8,7 +8,10 @@ export const images = [
   
   export const LOGO_URL = 'https://logos-download.com/wp-content/uploads/2016/03/Starbucks_Logo_2011.png'
 
-  export const SWIGGY_DATA_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.63270&lng=77.21980&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+  const DELIVERY_LOCATION_OF_DATA = "New Delhi";
+
+
+  export const SWIGGY_DATA_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6139298&lng=77.2088282&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
   export const SWIGGY_MENU_URL = 'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6304203&lng=77.21772159999999&restaurantId=';
   

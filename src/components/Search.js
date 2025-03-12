@@ -1,9 +1,9 @@
 import React from "react";
 
-function Search({moreThanSpecific,searchText,setSearchText,handleSearchBar}) {
+function Search({fiiteredByRation,searchText,setSearchText,handleSearchBar}) {
   return (
-    <div>
-      <button onClick={moreThanSpecific}>click for rating more than 4.2</button>
+    <div style={{display:'flex',justifyContent:'space-around',margin:'10px'}}>
+      <button onClick={fiiteredByRation}>click for rating more than 4.2</button>
       <div>
         <input
           type="text"
@@ -13,8 +13,9 @@ function Search({moreThanSpecific,searchText,setSearchText,handleSearchBar}) {
             setSearchText(e.target.value);
           }}
         />
+        <button onClick={handleSearchBar}>Search</button>
       </div>
-      <button onClick={handleSearchBar}>Search</button>
+      
     </div>
   );
 }

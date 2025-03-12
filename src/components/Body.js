@@ -32,7 +32,7 @@ const Body = () => {
     setFilteredData(s);
   }
 
-  function moreThanSpecific() {
+  function fiiteredByRation() {
     let updatedList = actualData.filter((item) => Number(item.info.avgRating ) > 4.2);
     setFilteredData(updatedList);
   }
@@ -51,15 +51,13 @@ const Body = () => {
         searchText={searchText}
         setSearchText={setSearchText}
         handleSearchBar={handleSearchBar}
-        moreThanSpecific={moreThanSpecific}
+        fiiteredByRation={fiiteredByRation}
       />
+      <h2 style={{textAlign:'center'}}>Restaurants with online food delivery in Delhi</h2>
       <div className="card-container">
-
         {filteredData?.map((item) => {
           return (
             <Link key={item.info.id} to={"/restaurant/" + item.info.id}>
-              {console.log(item.info.id)
-              }
               <Card cardData={item.info} />
             </Link>
           );

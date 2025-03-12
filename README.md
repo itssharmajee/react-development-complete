@@ -358,3 +358,13 @@ export default App;
 ```
 
 This way, the components will only be loaded when the user navigates to their respective routes, improving performance further.
+
+
+# Higher order Component
+
+
+
+
+# Conterolled & Uncontrolled Components
+# Lifting the State up 
+# IU and Data Layer part in React 
