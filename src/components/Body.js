@@ -32,7 +32,7 @@ const Body = () => {
     setFilteredData(s);
   }
 
-  function fiiteredByRation() {
+  function fiiteredByRating() {
     let updatedList = actualData.filter((item) => Number(item.info.avgRating ) > 4.2);
     setFilteredData(updatedList);
   }
@@ -43,7 +43,7 @@ const Body = () => {
 
   if(status == false) return <h1>You are Offline Check you Internet Connectivity</h1>
 
-  return filteredData?.length == 0 ? (
+  return filteredData?.length == 0 || actualData?.length == 0  ? (
     <Skeleton />
   ) : (
     <div>
@@ -51,7 +51,7 @@ const Body = () => {
         searchText={searchText}
         setSearchText={setSearchText}
         handleSearchBar={handleSearchBar}
-        fiiteredByRation={fiiteredByRation}
+        fiiteredByRating={fiiteredByRating}
       />
       <h2 style={{textAlign:'center'}}>Restaurants with online food delivery in Delhi</h2>
       <div className="card-container">

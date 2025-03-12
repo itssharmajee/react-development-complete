@@ -1,9 +1,11 @@
 import ClothCard from "./ClothCard";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Skeleton } from '../components/Skeleton'
 import { CLOTH_URL } from "../utils/constraints.js";
+import UserContext from "../utils/UserContext.js";
 const ClothingShop = () => {
     const [clothData, setclothData] = useState([]);
+    const {loggedInUser} = useContext(UserContext);
 
     const fetchData = async () => {
         try {
@@ -30,12 +32,15 @@ const ClothingShop = () => {
     if (clothData.length === 0) return <Skeleton />
 
     return (
-        <div style={styles} >
+        <div>
+            <h3 style={{textAlign:'center'}}> LoggedIn User: {loggedInUser}</h3>
+            <div style={styles} >
             {
                 clothData.map((item) => (
                     <ClothCard key={item.id} data={item} />
                 ))
             }
+        </div>
         </div>
     )
 }

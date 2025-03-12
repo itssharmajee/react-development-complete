@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileClass from "./Profile_Class";
-import BasicClassComponent from "./Basic_Class_Component";
+
 
 function About() {
   const heading = "GitHub Profile";

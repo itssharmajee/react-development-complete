@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 const Contact = ()=>{
+    const user = useContext(UserContext);
     return (
         <div>
-            We are at conatct us page
+            <p style={{ textAlign: 'center' }}>User: {user.loggedInUser}</p>
         </div>
     )
 }
