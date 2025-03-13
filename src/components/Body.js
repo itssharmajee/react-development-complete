@@ -9,6 +9,7 @@ const Body = () => {
   const [actualData, setActualData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [loading,setLoading] = useState(true);
   const status = useOnlineStatus();
 
   async function fetchData() {
@@ -29,23 +30,26 @@ const Body = () => {
     let s = actualData.filter((item) =>
       item.info.name.toUpperCase().includes(searchText.toUpperCase())
     ); // making case insensitive
-    setFilteredData(s);
+    if (s.length != 0) {
+      setFilteredData(s);
+    }else{
+      alert("Not Available Item");
+    }
   }
 
   function fiiteredByRating() {
     let updatedList = actualData.filter((item) => Number(item.info.avgRating ) > 4.2);
-    setFilteredData(updatedList);
+    if(updatedList.length != 0) setFilteredData(updatedList);
   }
 
   useEffect(() => {
     fetchData();
+    setLoading(false);
   }, []);
 
   if(status == false) return <h1>You are Offline Check you Internet Connectivity</h1>
-
-  return filteredData?.length == 0 || actualData?.length == 0  ? (
-    <Skeleton />
-  ) : (
+  if(loading) {return <Skeleton/>}
+  return (
     <div>
       <Search
         searchText={searchText}

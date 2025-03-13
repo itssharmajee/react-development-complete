@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constraints";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
-
+  const cartItems = useSelector((state)=>state.cart.items)
+  console.log(cartItems);
+  
   function loginToggle() {
     setToggle(!toggle);
   }
@@ -21,6 +24,7 @@ export const Header = () => {
         <Link to='/service'>Service </Link>
         <Link to='/contact'>Contact </Link>
         <Link to='/cloth'>ClothShop </Link>
+        <Link to='/cart'>Cart-{cartItems.length} </Link>
 
         <button className="btn" onClick={loginToggle}>
           {toggle ? "Login In" : "Log Out"}

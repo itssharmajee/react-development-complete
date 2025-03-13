@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
 import { IMAGE_BASE_URL } from "../utils/constraints";
+import { addItem } from "../store/slice/cartSlice";
 
 const RestaurantMenuCard = ({menuData,open}) => {
+    const dispatch = useDispatch();
+    function handleAddtoCart(name){
+        dispatch(addItem(String(name)))
+    }
 
     return open && (
         <ul className="item-list">
@@ -23,7 +29,9 @@ const RestaurantMenuCard = ({menuData,open}) => {
                     </div>
                     <div className="btn-container">
                     <img src={IMAGE_BASE_URL+item.card.info.imageId} width={'80px'} alt="Notfound"/>
-                    {IMAGE_BASE_URL+item.card.info.imageId && <button className="Add-btn">Add</button >}
+                    {IMAGE_BASE_URL+item.card.info.imageId && <button className="Add-btn" onClick={()=>{
+                        handleAddtoCart(item.card.info.name)
+                    }}>Add</button >}
                     </div>
                     
                 </li>

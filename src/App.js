@@ -11,6 +11,9 @@ import Service from "./components/Service";
 import useOnlineStatus from "./utils/custom-hook/useOnlineStatus";
 import { Skeleton } from "./components/Skeleton";
 import UserContext from "./utils/UserContext";
+import {Provider} from 'react-redux'
+import cartStore from "./store/store.js";
+import Cart from "./components/Cart.js";
 // import ClothingShop from "./components/ClothingShop";
 
 const ClothingShop = lazy(() => import('./components/ClothingShop'));
@@ -30,7 +33,8 @@ function App() {
   },[])
 
   return (
-    <UserContext.Provider value={{loggedInUser : 'Sapna'}} > {/*Wrapping the App component inside UserContext.Provider so that UserContext will be available for everywhere and also updating the value of loggedInUser and sending a function setUserName which the help of it you can modify you userName*/}
+    <Provider store={cartStore}>
+      <UserContext.Provider value={{loggedInUser : 'Sapna'}} > {/*Wrapping the App component inside UserContext.Provider so that UserContext will be available for everywhere and also updating the value of loggedInUser and sending a function setUserName which the help of it you can modify you userName*/}
     <div>
     <p style={{ textAlign: 'center' }}>Network status :{status ? "🟢" : "🔴"}</p>
       
@@ -45,6 +49,7 @@ function App() {
     
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 }
 
@@ -72,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: '/cloth',
         element: <Suspense fallback={<Skeleton />}><ClothingShop /></Suspense>,
+      },
+      {
+        path: '/cart',
+        element: <Cart/>,
       },
       {
         path: '/restaurant/:restId',
