@@ -27,3 +27,4 @@ yarn-error.log*
 # custom
 
 v5.json
+coverage

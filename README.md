@@ -796,3 +796,23 @@ Conclusion- Behind the Scene Redux tool kit uses **immer library** for mutate/im
 Immer is a JavaScript library that helps you work with immutable state in a more convenient and efficient way. It allows you to modify state directly without actually mutating the original object. The library makes use of a concept known as structural sharing, which allows efficient state updates without copying the entire state.
 
 Immer works by using a proxy to intercept and record changes to the state, and then it produces a new state based on those changes. This allows you to work in a mutable style while still achieving the benefits of immutability.
+
+# **Testing with Jest**
+Jest is a popular JavaScript testing framework maintained by Facebook. It is widely used for testing JavaScript and React applications. Jest is designed to be easy to set up, fast, and provides a rich set of features out of the box.
+
+- **Manual Testing** 
+1. Unit Testing 
+```
+    Description: Focuses on testing individual units or components of a program, such as functions or methods, in isolation from the rest of the codebase.
+    Purpose: To ensure that each unit of code performs as expected.
+```
+2. Integration Testing
+
+```
+  Description: Tests the interaction between different modules or components of the application to ensure they work together as expected.
+  Purpose: To identify issues that occur when different units/modules interact.
+  ```
+
+  
+
+
