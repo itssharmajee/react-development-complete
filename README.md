@@ -1,5 +1,29 @@
+<<<<<<< HEAD
 # React with Parcel bundler
   ## Namaste React Course by Akshay Saini
+=======
+---
+
+### **React Single Page Application (SPA) with Parcel**  
+
+This project is a **Single Page Application (SPA)** built using **React** and **Parcel** for efficient bundling and fast performance. It integrates multiple APIs to provide real-time data and a seamless user experience.  
+
+#### **Features:**  
+✅ **Swiggy API Integration** – Fetches and displays live restaurant data from Swiggy, providing users with real-time updates on food options.  
+✅ **GitHub API Integration** – Showcases the user's GitHub profile details, including repositories, followers, and contributions.  
+✅ **FakeStore API Integration** – Displays a list of products from FakeStore API, mimicking an e-commerce experience.  
+✅ **React Router DOM** – Enables smooth navigation between different pages without reloading.  
+✅ **Redux & React Context** – Efficient state management for handling API responses and UI updates.  
+✅ **Jest for Testing** – Ensures the reliability and functionality of components with unit tests.  
+
+### **Tech Stack:**  
+- **Frontend:** React, Parcel, Redux, React Context, Redux Toolkit, Vanilla CSS  
+- **APIs Used:** Swiggy API, GitHub API, FakeStore API  
+- **Testing:** Jest  
+
+This SPA delivers a smooth and interactive experience, leveraging real-time data while maintaining optimal performance. 🚀  
+
+>>>>>>> 2ecc3140b368272ae6353467547de6059aec2c93
 ## important topics to create a notes...
 
 - Normal JS utility function like const name = 'sapna';
