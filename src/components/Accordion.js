@@ -11,10 +11,10 @@ const Accordion = ({ data, categoryIndex, showIndex, setshowIndex }) => {
         <div className="accordion-main-header">
             <div className="accordion-header" onClick={handleShowAccordion}>
                 <span>
-                    {data.card.card.title}({data.card?.card?.itemCards?.length})
+                    {data?.card?.card?.title}({data.card?.card?.itemCards?.length})
                 </span>{" "}
                 <i
-                    class={
+                    className={
                         dyStyle ? "fa-solid fa-chevron-up" : "fa-solid fa-chevron-down"
                     }
                 ></i>

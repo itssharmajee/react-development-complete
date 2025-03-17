@@ -11,7 +11,7 @@ const RestaurantMenuCard = ({menuData,open}) => {
     return open && (
         <ul className="item-list">
             {menuData?.map((item) => (
-                <li key={item.card.info.id}>
+                <li key={item.card.info.id} data-testid='foodItem'>
                     <div className="list-item-container">
                     <p><span className="item-name">{item.card.info.name} {" | "}</span>
                     <i>

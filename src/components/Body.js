@@ -22,7 +22,8 @@ const Body = () => {
       setActualData(result);
       setFilteredData(result);    
     } catch (error) {
-      alert(error + 'check you network connection or fetch URL')
+      console.log(error);
+      
     }
   }
 
@@ -33,7 +34,7 @@ const Body = () => {
     if (s.length != 0) {
       setFilteredData(s);
     }else{
-      alert("Not Available Item");
+      console.log("Not Available Item");
     }
   }
 

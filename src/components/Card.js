@@ -4,7 +4,7 @@ const Card = ({cardData}) => {
   const {name, areaName, avgRating, cloudinaryImageId, costForTwo,sla } = cardData;
 
 
-  return (<div className="card">
+  return (<div className="card" data-testid ="restCard">
     <img src={IMAGE_BASE_URL.concat(cloudinaryImageId)} alt="Card Image" className="card-image" />
     <div className="card-content">
       <h2 className="card-title">{name}</h2>

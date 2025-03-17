@@ -10,6 +10,7 @@ function Search({fiiteredByRating,searchText,setSearchText,handleSearchBar}) {
       <div>
         <input
           type="text"
+          data-testid ="searchInputBox"
           value={searchText}
           onChange={(e) => {
             e.preventDefault();
